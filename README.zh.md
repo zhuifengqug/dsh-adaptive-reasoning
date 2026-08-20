@@ -4,6 +4,22 @@
 
 插件保留 DSH 官方的模型选择器与 `/model` 命令不动。点击选择器里的 **推理等级 / Reasoning effort** 行会弹出无障碍的滑块面板：面板读取当前模型在 Host 上的确切推理元数据，并通过常规的 `session.selectModel` RPC 把选择写回。
 
+## 安装（两种方式）
+
+从 npm 安装：
+
+```sh
+dsh plugin --profile web add dsh-adaptive-reasoning
+```
+
+从 GitHub 安装（可锁定到已发布 tag 以获得可复现性）：
+
+```sh
+dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.1.0
+```
+
+安装完成后**重启 dsh web**。详细说明、卸载与可选的 models.dev 补全见下文。
+
 ## 功能
 
 - 只使用当前模型公布的 `reasoning.efforts`，不会自造一套全局档位表。

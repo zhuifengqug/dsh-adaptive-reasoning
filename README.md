@@ -4,6 +4,22 @@ A capability-aware reasoning-effort slider for the DeepSeek Harness Web GUI.
 
 The plugin keeps DSH's official model selector and `/model` command intact. Clicking the selector's existing **Reasoning effort** / **推理等级** row opens an accessible slider panel. The panel reads the selected model's exact reasoning metadata from the Host and writes selections back through the normal `session.selectModel` RPC.
 
+## Install (two ways)
+
+From npm:
+
+```sh
+dsh plugin --profile web add dsh-adaptive-reasoning
+```
+
+From GitHub (pin to a released tag for reproducibility):
+
+```sh
+dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.1.0
+```
+
+Restart `dsh web` afterwards. Details, removal, and the optional models.dev enrichment are covered below.
+
 ## What It Does
 
 - Uses only the current model's advertised `reasoning.efforts`; it does not invent a global effort list.
