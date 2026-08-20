@@ -1,0 +1,6 @@
+- insert:
+    - id: adaptive-reasoning
+      name: dsh-adaptive-reasoning
+      config:
+        enrichFromModelsDev: false
+        cacheHours: 24

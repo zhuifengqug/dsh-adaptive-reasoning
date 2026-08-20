@@ -1,0 +1,21 @@
+{
+  "name": "dsh-adaptive-reasoning",
+  "version": "0.1.0",
+  "description": "Capability-aware reasoning effort slider for the DeepSeek Harness web model selector.",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": ["index.js", "lib", "cordis.patch.yml", "README.md"],
+  "engines": {"node": "^22.19.0 || >=24.0.0"},
+  "keywords": ["deepseek-harness", "dsh", "dsh-plugin", "reasoning", "reasoning-effort", "models.dev"],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {"patch": "./cordis.patch.yml"},
+    "client": {"platform": "web", "inject": ["connection", "sessions", "remote"]}
+  }
+}
