@@ -1,0 +1,12 @@
+# Dependencies and build output
+node_modules/
+dist/
+*.log
+
+# Secrets / machine-local config
+.env
+settings.yaml
+
+# OS junk
+.DS_Store
+Thumbs.db

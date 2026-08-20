@@ -49,15 +49,19 @@ Enable it in the profile's `cordis.patch.yml` by overriding this entry:
 
 ## Install
 
-The package contains prebuilt plain JavaScript and has no `prepare` script, so it can be installed from a local checkout, a packed tarball, or a registry without granting pnpm build permissions.
+The package is plain JavaScript with no `prepare` script, so a git install needs no pnpm build permission. Install it straight from GitHub:
 
 ```sh
-# Run from the directory that contains this checkout.
-dsh plugin --profile web add ./dsh-adaptive-reasoning
+dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning
+
+# Pin to a released version for reproducibility (recommended):
+dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.1.0
 
 # Verify that the bundle patch participates in the Web profile.
 dsh --profile web --dump-config
 ```
+
+You can also install from a local checkout instead — run `dsh plugin --profile web add ./dsh-adaptive-reasoning` from the directory that contains it.
 
 Restart the existing `dsh web` process after installation. A client-plugin update hot-reloads only while the DSH checkout's `pnpm run dev:web` watcher is already rebuilding its bundles; this standalone bundle otherwise loads at the next Web process start.
 
