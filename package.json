@@ -10,10 +10,16 @@
     "./cordis.patch.yml": "./cordis.patch.yml",
     "./package.json": "./package.json"
   },
-  "files": ["index.js", "lib", "cordis.patch.yml", "README.md"],
+  "files": ["index.js", "lib", "cordis.patch.yml", "README.md", "README.zh.md", "LICENSE"],
   "engines": {"node": "^22.19.0 || >=24.0.0"},
   "keywords": ["deepseek-harness", "dsh", "dsh-plugin", "reasoning", "reasoning-effort", "models.dev"],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhuifengqug/dsh-adaptive-reasoning.git"
+  },
+  "homepage": "https://github.com/zhuifengqug/dsh-adaptive-reasoning#readme",
+  "bugs": { "url": "https://github.com/zhuifengqug/dsh-adaptive-reasoning/issues" },
   "dsh": {
     "bundle": {"patch": "./cordis.patch.yml"},
     "client": {"platform": "web", "inject": ["connection", "sessions", "remote"]}
