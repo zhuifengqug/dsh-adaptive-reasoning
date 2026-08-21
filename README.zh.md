@@ -15,7 +15,7 @@ dsh plugin --profile web add dsh-adaptive-reasoning
 从 GitHub 安装（可锁定到已发布 tag 以获得可复现性）：
 
 ```sh
-dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.1.0
+dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.2.0
 ```
 
 安装完成后**重启 dsh web**。详细说明、卸载与可选的 models.dev 补全见下文。
@@ -25,6 +25,7 @@ dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.1.0
 - 只使用当前模型公布的 `reasoning.efforts`，不会自造一套全局档位表。
 - 支持稀疏、非连续、以及供应商自定义的档位（如 `off`/`high`/`max` 或适配器自定义标识）。
 - 拖动实时预览，松开或键盘操作时提交；若 Host 拒绝改动，会回到上一次接受的档位。
+- 火焰动画滑块：基于 Canvas 把档位强度可视化为从小火苗到烈焰的实时火焰效果；原生 range 控件隐藏但保留交互与无障碍。
 - 使用 DSH 语义设计 token，并尊重 `prefers-reduced-motion`。
 - 不改变官方模型选择、加载失败、无障碍行为与 `/model` 命令。
 
@@ -71,7 +72,7 @@ dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.1.0
 dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning
 
 # 锁定到已发布版本以获得可复现性（推荐）：
-dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.1.0
+dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.2.0
 
 # 验证 bundle 补丁已参与 Web profile：
 dsh --profile web --dump-config

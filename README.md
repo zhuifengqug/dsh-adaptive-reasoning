@@ -15,7 +15,7 @@ dsh plugin --profile web add dsh-adaptive-reasoning
 From GitHub (pin to a released tag for reproducibility):
 
 ```sh
-dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.1.0
+dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.2.0
 ```
 
 Restart `dsh web` afterwards. Details, removal, and the optional models.dev enrichment are covered below.
@@ -25,6 +25,7 @@ Restart `dsh web` afterwards. Details, removal, and the optional models.dev enri
 - Uses only the current model's advertised `reasoning.efforts`; it does not invent a global effort list.
 - Supports sparse and provider-specific levels such as `off`, `high`, `max`, or an adapter-defined identifier.
 - Previews while dragging, commits on pointer release or keyboard navigation, and returns to the last accepted value if the Host rejects a change.
+- Flame-animated slider: a Canvas-based flame that grows from a small flicker to a roaring fire as effort increases; the native range input is visually hidden but still drives interaction and accessibility.
 - Uses DSH semantic design tokens and respects `prefers-reduced-motion`.
 - Leaves official model selection, load failures, accessibility behavior, and the `/model` command unchanged.
 
@@ -71,7 +72,7 @@ The package is plain JavaScript with no `prepare` script, so a git install needs
 dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning
 
 # Pin to a released version for reproducibility (recommended):
-dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.1.0
+dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.2.0
 
 # Verify that the bundle patch participates in the Web profile.
 dsh --profile web --dump-config
