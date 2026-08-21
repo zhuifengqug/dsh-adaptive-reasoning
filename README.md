@@ -24,8 +24,9 @@ Restart `dsh web` afterwards. Details, removal, and the optional models.dev enri
 
 - Uses only the current model's advertised `reasoning.efforts`; it does not invent a global effort list.
 - Supports sparse and provider-specific levels such as `off`, `high`, `max`, or an adapter-defined identifier.
-- Previews while dragging, commits on pointer release or keyboard navigation, and returns to the last accepted value if the Host rejects a change.
-- Flame-animated slider: a Canvas-based flame that grows from a small flicker to a roaring fire as effort increases; the native range input is visually hidden but still drives interaction and accessibility.
+- **Stepless drag**: continuous 0–100 dragging writes `reasoningEffort` live with a 16ms throttle, so requests never pile up during a drag.
+- **Snap on release**: releasing, blurring, or ending keyboard navigation snaps to the nearest declared level and issues one confirming write.
+- **WebGL fire**: a three-pass WebGL2 simulation (ignition → blur → composite) whose leading edge follows the slider; falls back to a static progress bar when WebGL2 is unavailable or reduced motion is preferred.
 - Uses DSH semantic design tokens and respects `prefers-reduced-motion`.
 - Leaves official model selection, load failures, accessibility behavior, and the `/model` command unchanged.
 

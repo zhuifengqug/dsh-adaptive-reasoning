@@ -24,8 +24,9 @@ dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.2.0
 
 - 只使用当前模型公布的 `reasoning.efforts`，不会自造一套全局档位表。
 - 支持稀疏、非连续、以及供应商自定义的档位（如 `off`/`high`/`max` 或适配器自定义标识）。
-- 拖动实时预览，松开或键盘操作时提交；若 Host 拒绝改动，会回到上一次接受的档位。
-- 火焰动画滑块：基于 Canvas 把档位强度可视化为从小火苗到烈焰的实时火焰效果；原生 range 控件隐藏但保留交互与无障碍。
+- **无极拖动**：0–100 连续拖动，实时写入 `reasoningEffort`（16ms 节流，拖动中不堆积请求）。
+- **松手吸附**：松开 / 失焦 / 键盘结束时吸附到最近档位，并补发一次确认写入。
+- **WebGL 火焰**：三通道 WebGL2 火焰模拟（点燃 → 模糊 → 合成），火焰前锋跟随滑块值；WebGL2 不可用或系统开启减少动画时回退到静态进度条。
 - 使用 DSH 语义设计 token，并尊重 `prefers-reduced-motion`。
 - 不改变官方模型选择、加载失败、无障碍行为与 `/model` 命令。
 
