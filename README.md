@@ -1,5 +1,7 @@
 # dsh-adaptive-reasoning
 
+[English](README.md) · [中文](README.zh.md)
+
 A capability-aware reasoning-effort slider for the DeepSeek Harness Web GUI.
 
 The plugin keeps DSH's official model selector and `/model` command intact. Clicking the selector's existing **Reasoning effort** / **推理等级** row opens an accessible slider panel. The panel reads the selected model's exact reasoning metadata from the Host and writes selections back through the normal `session.selectModel` RPC.
@@ -15,7 +17,7 @@ dsh plugin --profile web add dsh-adaptive-reasoning
 From GitHub (pin to a released tag for reproducibility):
 
 ```sh
-dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.2.0
+dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v2.0.0
 ```
 
 Restart `dsh web` afterwards. Details, removal, and the optional models.dev enrichment are covered below.
@@ -26,7 +28,10 @@ Restart `dsh web` afterwards. Details, removal, and the optional models.dev enri
 - Supports sparse and provider-specific levels such as `off`, `high`, `max`, or an adapter-defined identifier.
 - **Stepless drag**: continuous 0–100 dragging writes `reasoningEffort` live with a 16ms throttle, so requests never pile up during a drag.
 - **Snap on release**: releasing, blurring, or ending keyboard navigation snaps to the nearest declared level and issues one confirming write.
-- **WebGL fire**: a three-pass WebGL2 simulation (ignition → blur → composite) whose leading edge follows the slider; falls back to a static progress bar when WebGL2 is unavailable or reduced motion is preferred.
+- **WebGL fire**: a three-pass WebGL2 simulation (ignition → blur → composite) whose leading edge follows the slider; the track sits as cool ash until a level is dragged over and "ignites".
+- **Per-level ember palette**: each effort level burns its own colour from ash grey up to burning red.
+- **Pixel-art UI**: 4px-pixelated fire, jagged hard borders, segmented energy cells, and Press Start 2P / Zpix pixel fonts (with system-font fallback).
+- Falls back to static energy cells when WebGL2 is unavailable or reduced motion is preferred.
 - Uses DSH semantic design tokens and respects `prefers-reduced-motion`.
 - Leaves official model selection, load failures, accessibility behavior, and the `/model` command unchanged.
 
@@ -73,7 +78,7 @@ The package is plain JavaScript with no `prepare` script, so a git install needs
 dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning
 
 # Pin to a released version for reproducibility (recommended):
-dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.2.0
+dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v2.0.0
 
 # Verify that the bundle patch participates in the Web profile.
 dsh --profile web --dump-config

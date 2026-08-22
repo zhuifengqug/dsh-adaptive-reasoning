@@ -1,6 +1,6 @@
 {
   "name": "dsh-adaptive-reasoning",
-  "version": "0.2.0",
+  "version": "2.0.0",
   "description": "Capability-aware reasoning effort slider for the DeepSeek Harness web model selector.",
   "type": "module",
   "main": "./index.js",

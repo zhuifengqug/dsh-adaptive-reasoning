@@ -1,5 +1,7 @@
 # dsh-adaptive-reasoning
 
+[English](README.md) · [中文](README.zh.md)
+
 面向 DeepSeek Harness Web GUI 的、基于模型能力的推理档位滑块。
 
 插件保留 DSH 官方的模型选择器与 `/model` 命令不动。点击选择器里的 **推理等级 / Reasoning effort** 行会弹出无障碍的滑块面板：面板读取当前模型在 Host 上的确切推理元数据，并通过常规的 `session.selectModel` RPC 把选择写回。
@@ -15,7 +17,7 @@ dsh plugin --profile web add dsh-adaptive-reasoning
 从 GitHub 安装（可锁定到已发布 tag 以获得可复现性）：
 
 ```sh
-dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.2.0
+dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v2.0.0
 ```
 
 安装完成后**重启 dsh web**。详细说明、卸载与可选的 models.dev 补全见下文。
@@ -26,7 +28,10 @@ dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.2.0
 - 支持稀疏、非连续、以及供应商自定义的档位（如 `off`/`high`/`max` 或适配器自定义标识）。
 - **无极拖动**：0–100 连续拖动，实时写入 `reasoningEffort`（16ms 节流，拖动中不堆积请求）。
 - **松手吸附**：松开 / 失焦 / 键盘结束时吸附到最近档位，并补发一次确认写入。
-- **WebGL 火焰**：三通道 WebGL2 火焰模拟（点燃 → 模糊 → 合成），火焰前锋跟随滑块值；WebGL2 不可用或系统开启减少动画时回退到静态进度条。
+- **WebGL 火焰**：三通道 WebGL2 火焰模拟（点燃 → 模糊 → 合成），火焰前锋跟随滑块值；轨道平时是冷却灰烬，拖过某一档位才「点燃」。
+- **档位余烬配色**：每个推理档位燃烧出自己的颜色，从灰烬灰渐变到燃烧红。
+- **像素风界面**：4px 像素化火焰、锯齿硬边框、分段能量格，以及 Press Start 2P / Zpix 像素字体（带系统字体回退）。
+- WebGL2 不可用或系统开启减少动画时，回退到静态能量格。
 - 使用 DSH 语义设计 token，并尊重 `prefers-reduced-motion`。
 - 不改变官方模型选择、加载失败、无障碍行为与 `/model` 命令。
 
@@ -73,7 +78,7 @@ dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.2.0
 dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning
 
 # 锁定到已发布版本以获得可复现性（推荐）：
-dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v0.2.0
+dsh plugin --profile web add github:zhuifengqug/dsh-adaptive-reasoning#v2.0.0
 
 # 验证 bundle 补丁已参与 Web profile：
 dsh --profile web --dump-config
